@@ -65,6 +65,10 @@ RGBGFXFLAGS  ?= -Weverything
 # pokeblue_debug.gbc is no longer part of `all`: the debug build adds code to banks whose
 # layout is pinned for save compatibility (see NOTES.md), so it does not link.
 all: pokered.gbc pokeblue.gbc
+	@mkdir -p build
+	@cp pokered.gbc "build/Pokemon - Super Vanilla Red.gbc"
+	@cp pokeblue.gbc "build/Pokemon - Super Vanilla Blue.gbc"
+
 red:        pokered.gbc
 blue:       pokeblue.gbc
 blue_debug: pokeblue_debug.gbc

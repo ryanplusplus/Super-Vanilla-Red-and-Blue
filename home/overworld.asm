@@ -382,7 +382,7 @@ DoBikeSpeedup::
 	ret nz
 	ld a, [wWalkBikeSurfState]
 	and a
-	jr z, .checkBHeld ; on foot
+	jr z, .checkBNotHeld ; on foot
 	dec a
 	jr nz, .goFaster ; surfing
 ; riding a bike
@@ -403,6 +403,11 @@ DoBikeSpeedup::
 	ldh a, [hJoyHeld]
 	bit B_PAD_B, a
 	ret z
+	jp AdvancePlayerSprite
+.checkBNotHeld
+	ldh a, [hJoyHeld]
+	bit B_PAD_B, a
+	ret nz
 	jp AdvancePlayerSprite
 
 ; check if the player has stepped onto a warp after having not collided
